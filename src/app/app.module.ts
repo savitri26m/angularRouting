@@ -17,6 +17,7 @@ import { AuthService } from './auth-service.service';
 import { CanDeactivateGuardService } from './can-deactivate-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ServerResolver } from './server-resolver.service';
+import { UsersFormComponent } from './forms/template-driven/users-form/users-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ServerResolver } from './server-resolver.service';
     EditServerComponent,
     ServerComponent,
     PageNotFoundComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    UsersFormComponent
   ],
   imports: [
     BrowserModule,

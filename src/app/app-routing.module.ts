@@ -12,9 +12,11 @@ import { AuthGuard } from "./auth-guard.service";
 import { CanDeactivateGuardService } from "./can-deactivate-guard.service";
 import { ErrorPageComponent } from "./error-page/error-page.component";
 import { ServerResolver } from "./server-resolver.service";
+import { UsersFormComponent } from "./forms/template-driven/users-form/users-form.component";
 
 const appRoutes: Routes = [
     {path: '', component: HomeComponent},
+    {path: 'usersForm', component: UsersFormComponent},
     {path: 'users', component: UsersComponent, children: [
       {path: ':id/:name', component: UserComponent}
     ] },

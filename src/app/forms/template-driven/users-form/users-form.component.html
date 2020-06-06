@@ -1,0 +1,37 @@
+<form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <div class="form-group">
+      <label for="username">UserName</label>
+      <input type="text" class="form-control" ngModel 
+        required name="username" 
+        id="username" placeholder="username">
+    </div>
+    <button class="btn btn-warning" type="button">Suggest UserName</button>
+
+    <!-- example of no binding  -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control"
+        [ngClass]="{'has-error': email.touched && email.invalid}" ngModel 
+       required email #email="ngModel" name="email" id="email" placeholder="email">
+       <span class="help-block" *ngIf="email.invalid && email.touched" >Enter valid email !</span>
+    </div>
+
+    <!-- one way binding to pre populate default question -->
+    <div class="form-group">
+      <label for="secret">Secret Question</label>
+      <select id="secret" [ngModel]="defaultQuestion" name="secret"        
+      class="form-control">
+        <option value="pet">Your first pet ?</option>
+        <option value="teacher">Your first teacher ?</option>
+      </select>
+    </div>
+
+    <!-- example of two-way data binding  -->
+    <div class="form-group">
+        <textarea placeholder="Answer to your secret question !!"
+         name="questionAnswer" rows="3" class="form-control" [(ngModel)]="answer"></textarea>
+    </div>
+    <p>Your answer is: {{answer}}</p>
+
+    <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
+  </form>
