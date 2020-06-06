@@ -1,22 +1,36 @@
 <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-    <div class="form-group">
-      <label for="username">UserName</label>
-      <input type="text" class="form-control" ngModel 
-        required name="username" 
-        id="username" placeholder="username">
-    </div>
-    <button class="btn btn-warning" type="button">Suggest UserName</button>
+    <div id="userDataGroup"
+           #userData="ngModelGroup" ngModelGroup="userData">
+        <div class="form-group">
+        <label for="username">UserName</label>
+        <input type="text" class="form-control" ngModel 
+            required name="username" 
+            id="username" placeholder="username">
+        </div>
+        <button class="btn btn-warning" (click)="suggestUserName()" type="button">Suggest UserName</button>
 
-    <!-- example of no binding  -->
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="email" class="form-control"
-        [ngClass]="{'has-error': email.touched && email.invalid}" ngModel 
-       required email #email="ngModel" name="email" id="email" placeholder="email">
-       <span class="help-block" *ngIf="email.invalid && email.touched" >Enter valid email !</span>
-    </div>
+        <!-- example of no binding, to tell angular that input is a control  -->
+        <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control"
+            [ngClass]="{'has-error': email.touched && email.invalid}" ngModel 
+        required email #email="ngModel" name="email" id="email" placeholder="email">
+        <span class="help-block" *ngIf="email.invalid && email.touched" >Enter valid email !</span>
+        </div>
 
-    <!-- one way binding to pre populate default question -->
+
+    </div>
+    <p *ngIf="userData.invalid && userData.touched">User Data is invalid !</p>
+
+    <p>Gender:</p>
+    <div class="radio-inline" *ngFor="let gender of genders">
+        <label>
+          <input type="radio" ngModel name="optionsRadios" id="optionsRadios1" [value]="gender" >
+          {{gender}}
+        </label>
+      </div>
+
+    <!-- one way binding to pre populate default value to form control -->
     <div class="form-group">
       <label for="secret">Secret Question</label>
       <select id="secret" [ngModel]="defaultQuestion" name="secret"        
@@ -26,12 +40,14 @@
       </select>
     </div>
 
-    <!-- example of two-way data binding  -->
+    <!-- example of two-way data binding, to instantly output entered user value  -->
     <div class="form-group">
         <textarea placeholder="Answer to your secret question !!"
          name="questionAnswer" rows="3" class="form-control" [(ngModel)]="answer"></textarea>
     </div>
     <p>Your answer is: {{answer}}</p>
+
+    
 
     <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
   </form>

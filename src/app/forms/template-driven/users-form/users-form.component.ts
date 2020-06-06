@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,10 +7,11 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./users-form.component.css']
 })
 export class UsersFormComponent implements OnInit {
-  @ViewChild('f') userForm: ElementRef;
+  @ViewChild('f') userForm: NgForm;
 
   defaultQuestion = "pet";
   answer="";
+  genders = ['male', 'female', 'other'];
 
   constructor() { }
 
@@ -19,6 +20,21 @@ export class UsersFormComponent implements OnInit {
 
   suggestUserName() {
     const suggestedName = "SuperUser";
+    // this.userForm.setValue({
+    //   userData: {
+    //     username: suggestedName,
+    //     email: ""
+    //   },
+    //   secret: 'pet',
+    //   questionAnswer: '',
+    //   gender: 'female'
+    // })
+
+    this.userForm.form.patchValue({
+      userData: {
+        username: suggestedName
+      }
+    })
   }
 
   // onSubmit(formEl: NgForm){
