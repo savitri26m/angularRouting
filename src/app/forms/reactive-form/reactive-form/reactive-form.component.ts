@@ -39,6 +39,16 @@ export class ReactiveFormComponent implements OnInit {
       'gender': new FormControl('female', Validators.required),
       'hobbies': new FormArray([])
     })
+
+    // Status changes and Value changes example
+
+    this.signUpForm.statusChanges.subscribe(
+      (status) => console.log(status)
+    )
+
+    this.signUpForm.valueChanges.subscribe(
+      (value) => console.log(value)
+    )
   }
 
   onSubmit(){
