@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 const forbiddenNamesArray = ['Anna', 'Null'];
 
 function forbiddenNames(control: AbstractControl): { [s: string] : boolean } | null {
-  console.log(forbiddenNamesArray.indexOf(control.value))
   if( forbiddenNamesArray.indexOf(control.value) !== -1) {
     return {'nameIsForbidden': true}
   }
@@ -42,13 +41,13 @@ export class ReactiveFormComponent implements OnInit {
 
     // Status changes and Value changes example
 
-    this.signUpForm.statusChanges.subscribe(
-      (status) => console.log(status)
-    )
+    // this.signUpForm.statusChanges.subscribe(
+    //   (status) => console.log(status)
+    // )
 
-    this.signUpForm.valueChanges.subscribe(
-      (value) => console.log(value)
-    )
+    // this.signUpForm.valueChanges.subscribe(
+    //   (value) => console.log(value)
+    // )
   }
 
   onSubmit(){

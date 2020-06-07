@@ -19,6 +19,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { ServerResolver } from './server-resolver.service';
 import { UsersFormComponent } from './forms/template-driven/users-form/users-form.component';
 import { ReactiveFormComponent } from './forms/reactive-form/reactive-form/reactive-form.component';
+import { PractisereactiveFormComponent } from './forms/reactive-form/practisereactive-form/practisereactive-form.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ReactiveFormComponent } from './forms/reactive-form/reactive-form/react
     PageNotFoundComponent,
     ErrorPageComponent,
     UsersFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    PractisereactiveFormComponent
   ],
   imports: [
     BrowserModule,
