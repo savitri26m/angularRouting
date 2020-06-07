@@ -15,6 +15,16 @@ export class UsersFormComponent implements OnInit {
 
   constructor() { }
 
+  user = {
+    username: '',
+    email: '',
+    secret: '',
+    questionAnswer: '',
+    gender: ''
+  }
+
+  formSubmitted: boolean = false;
+
   ngOnInit(): void {
   }
 
@@ -42,7 +52,16 @@ export class UsersFormComponent implements OnInit {
   // }
 
   onSubmit(){
-    console.log(this.userForm);
+    this.formSubmitted = !this.formSubmitted;
+
+    this.user.username = this.userForm.value.userData.username;
+    this.user.email = this.userForm.value.userData.email;
+    this.user.secret = this.userForm.value.secret;
+    this.user.questionAnswer = this.userForm.value.questionAnswer;
+    this.user.gender = this.userForm.value.gender;
+
+    this.userForm.reset();
   }
+
 
 }

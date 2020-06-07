@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -18,6 +18,7 @@ import { CanDeactivateGuardService } from './can-deactivate-guard.service';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { ServerResolver } from './server-resolver.service';
 import { UsersFormComponent } from './forms/template-driven/users-form/users-form.component';
+import { ReactiveFormComponent } from './forms/reactive-form/reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +31,14 @@ import { UsersFormComponent } from './forms/template-driven/users-form/users-for
     ServerComponent,
     PageNotFoundComponent,
     ErrorPageComponent,
-    UsersFormComponent
+    UsersFormComponent,
+    ReactiveFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [ServersService, AuthGuard, AuthService, CanDeactivateGuardService, ServerResolver],
   bootstrap: [AppComponent]

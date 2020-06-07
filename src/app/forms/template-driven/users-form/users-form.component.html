@@ -17,15 +17,13 @@
         required email #email="ngModel" name="email" id="email" placeholder="email">
         <span class="help-block" *ngIf="email.invalid && email.touched" >Enter valid email !</span>
         </div>
-
-
     </div>
     <p *ngIf="userData.invalid && userData.touched">User Data is invalid !</p>
 
     <p>Gender:</p>
     <div class="radio-inline" *ngFor="let gender of genders">
         <label>
-          <input type="radio" ngModel name="optionsRadios" id="optionsRadios1" [value]="gender" >
+          <input type="radio" ngModel name="gender" id="gender" [value]="gender" >
           {{gender}}
         </label>
       </div>
@@ -47,7 +45,14 @@
     </div>
     <p>Your answer is: {{answer}}</p>
 
-    
-
     <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>
   </form>
+
+  <div *ngIf="formSubmitted">
+      <h3>Your values:</h3>
+      <p>Username: {{user.username}}</p>
+      <p>Email: {{user.email}}</p>
+      <p>Gender: {{user.gender}}</p>
+      <p>Secret Question: {{user.secret}}</p>
+      <p>Answer: {{user.questionAnswer}}</p>
+  </div>
